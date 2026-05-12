@@ -8,8 +8,8 @@ import path from "path";
 export default defineConfig({
   plugins: [
     TanStackRouterVite(),
-    tailwindcss(),
     react(),
+    tailwindcss(),
     tsconfigPaths(),
   ],
   resolve: {

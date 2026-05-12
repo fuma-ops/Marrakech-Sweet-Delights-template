@@ -4,11 +4,8 @@ import {
   Link,
   createRootRouteWithContext,
   useRouter,
-  HeadContent,
-  Scripts,
 } from "@tanstack/react-router";
 
-import appCss from "../styles.css?url";
 import { CartProvider } from "@/lib/cart";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
@@ -73,45 +70,10 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
 }
 
 export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()({
-  head: () => ({
-    meta: [
-      { charSet: "utf-8" },
-      { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Délice de Marrakech — Cakes Design, Macarons & Viennoiseries" },
-      { name: "description", content: "Pâtisserie artisanale à Marrakech. Cakes design, macarons et viennoiseries livrés partout au Maroc." },
-      { name: "author", content: "Délice de Marrakech" },
-      { property: "og:title", content: "Délice de Marrakech — Pâtisserie de luxe" },
-      { property: "og:description", content: "Cakes design sur mesure, macarons et viennoiseries livrés partout au Maroc." },
-      { rel: "preconnect", href: "https://fonts.googleapis.com" },
-      { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "" },
-      { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary" },
-      { name: "twitter:site", content: "@Lovable" },
-    ],
-    links: [
-      { rel: "stylesheet", href: appCss },
-      { rel: "stylesheet", href: "https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Inter:wght@300..700&display=swap" },
-    ],
-  }),
-  shellComponent: RootShell,
   component: RootComponent,
   notFoundComponent: NotFoundComponent,
   errorComponent: ErrorComponent,
 });
-
-function RootShell({ children }: { children: React.ReactNode }) {
-  return (
-    <html lang="en">
-      <head>
-        <HeadContent />
-      </head>
-      <body>
-        {children}
-        <Scripts />
-      </body>
-    </html>
-  );
-}
 
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
@@ -122,7 +84,9 @@ function RootComponent() {
         <div className="min-h-screen flex flex-col relative overflow-x-hidden">
           <FloatingBackground />
           <Header />
-          <main className="flex-1 relative z-10"><Outlet /></main>
+          <main className="flex-1 relative z-10">
+            <Outlet />
+          </main>
           <Footer />
         </div>
         <Toaster position="top-center" richColors />
