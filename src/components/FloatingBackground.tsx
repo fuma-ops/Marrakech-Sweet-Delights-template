@@ -1,6 +1,14 @@
+import React, { useEffect, useState } from "react";
 import { motion } from "motion/react";
-import { CakeSlice, Cookie, Candy, IceCream, Croissant, Donut } from "lucide-react";
-import { useEffect, useState } from "react";
+import {
+  CakeSlice,
+  Cookie,
+  Candy,
+  IceCream,
+  Croissant,
+  Donut,
+  LucideIcon,
+} from "lucide-react";
 
 const icons = [
   { Icon: CakeSlice, size: 24 },
@@ -11,9 +19,17 @@ const icons = [
   { Icon: Donut, size: 24 },
 ];
 
-const FloatingIcon = ({ Icon, size, index }: { Icon: any, size: number, index: number }) => {
+const FloatingIcon = ({
+  Icon,
+  size,
+  index,
+}: {
+  Icon: LucideIcon;
+  size: number;
+  index: number;
+}) => {
   const [randomPos, setRandomPos] = useState({ x: 0, y: 0 });
-  
+
   useEffect(() => {
     setRandomPos({
       x: Math.random() * 100,
@@ -46,11 +62,11 @@ const FloatingIcon = ({ Icon, size, index }: { Icon: any, size: number, index: n
     >
       <div className="relative group">
         <div className="absolute inset-0 bg-primary/30 blur-2xl rounded-full scale-150" />
-        <Icon 
-          size={size} 
-          className="drop-shadow-[0_0_20px_rgba(255,100,150,0.6)]" 
+        <Icon
+          size={size}
+          className="drop-shadow-[0_0_20px_rgba(255,100,150,0.6)]"
         />
-        <motion.div 
+        <motion.div
           animate={{ scale: [1, 1.5, 1], opacity: [0.3, 0.5, 0.3] }}
           transition={{ duration: 3, repeat: Infinity }}
           className="absolute inset-0 bg-primary/20 blur-md rounded-full -z-10"
