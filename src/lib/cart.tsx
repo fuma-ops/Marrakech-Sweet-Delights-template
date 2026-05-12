@@ -22,11 +22,17 @@ export function CartProvider({ children }: { children: ReactNode }) {
     try {
       const raw = localStorage.getItem("cart");
       if (raw) setItems(JSON.parse(raw));
-    } catch {}
+    } catch (e) {
+      console.error("Failed to load cart from localStorage:", e);
+    }
   }, []);
 
   useEffect(() => {
-    try { localStorage.setItem("cart", JSON.stringify(items)); } catch {}
+    try {
+      localStorage.setItem("cart", JSON.stringify(items));
+    } catch (e) {
+      console.error("Failed to save cart to localStorage:", e);
+    }
   }, [items]);
 
   const add: CartCtx["add"] = (p, qty = 1) =>

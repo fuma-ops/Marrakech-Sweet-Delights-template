@@ -11,8 +11,22 @@ export function Footer() {
             Pâtisserie artisanale à Marrakech. Cakes design disponibles uniquement à Marrakech. Macarons & viennoiseries livrés partout au Maroc.
           </p>
           <div className="flex gap-3 mt-6">
-            <a href="#" className="p-2 rounded-full bg-background hover:bg-primary hover:text-primary-foreground transition-colors"><Instagram className="w-4 h-4" /></a>
-            <a href="#" className="p-2 rounded-full bg-background hover:bg-primary hover:text-primary-foreground transition-colors"><Facebook className="w-4 h-4" /></a>
+            <a
+              href="https://instagram.com"
+              target="_blank"
+              rel="noreferrer"
+              className="p-2 rounded-full bg-background hover:bg-primary hover:text-primary-foreground transition-colors"
+            >
+              <Instagram className="w-4 h-4" />
+            </a>
+            <a
+              href="https://facebook.com"
+              target="_blank"
+              rel="noreferrer"
+              className="p-2 rounded-full bg-background hover:bg-primary hover:text-primary-foreground transition-colors"
+            >
+              <Facebook className="w-4 h-4" />
+            </a>
           </div>
         </div>
 
